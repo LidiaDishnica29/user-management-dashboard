@@ -1,3 +1,10 @@
+# Run application
+-Frontend
+npm run start
+-REST API JSON server
+1- json-server --watch db.json
+
+
 # UserManagementDashboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.

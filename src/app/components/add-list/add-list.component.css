@@ -1,0 +1,8 @@
+.multiple-card {
+  background-color: aliceblue;
+}
+
+.user-add-form {
+  display: flex;
+  flex-direction: column;
+}
