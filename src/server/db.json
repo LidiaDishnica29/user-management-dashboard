@@ -1,0 +1,19 @@
+{
+  "user-list": [
+    {
+      "id":1,
+      "name": "Lidia",
+      "email": "lidia.dishnica@gmail.com"
+    },
+    {
+      "id":2,
+      "name": "Lidia2",
+      "email": "Lidia2@gmail.com"
+    },
+    {
+      "id":3,
+      "name": "Test1",
+      "email": "test@gmail.com"
+    }
+  ]
+}
