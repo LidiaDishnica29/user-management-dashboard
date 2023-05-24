@@ -31,9 +31,11 @@ export class AddListComponent implements OnInit {
   }
 
   onSaveUser(): void {
+    debugger;
     this.userDetail = this.userListForm.value;
-    this.userService.addUserInfo(this.userDetail.name, this.userDetail.email);
+    this.userService.addUsers(this.userDetail).subscribe(user=>this.userService.users.push(user));
 
     this.userListForm.reset();
   }
+
 }

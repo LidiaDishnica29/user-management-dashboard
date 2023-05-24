@@ -1,6 +1,5 @@
-import { Observable, combineLatest, map } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
-import { Component } from '@angular/core';
 import { IUserDetail } from 'src/app/models/user-detail.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,17 +8,31 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
 })
-export class UserListComponent {
-  loadAllResult$ = this.userService.loadAllUserResult$;
-  userDetail$  = this.userService.userDetail$;
+export class UserListComponent implements OnInit{
+  // loadAllResult$ = this.userService.getUsers();
+  // userDetail$  = this.userService.userDetail$;
 
-  userListResult$: Observable<IUserDetail[]> = this.loadAllResult$.pipe(
-    map((userDetailList) =>
-      userDetailList.filter((userDetailList: IUserDetail) =>
-        `${userDetailList.name} ${userDetailList.email}`.toLowerCase()
-      )
-    )
-  );
+  // userListResult$: Observable<IUserDetail[]> = this.loadAllResult$.pipe(
+  //   map((userDetailList) =>
+  //     userDetailList.filter((userDetailList: IUserDetail) =>
+  //       `${userDetailList.name} ${userDetailList.email}`.toLowerCase()
+  //     )
+  //   )
+  // );
+  users: IUserDetail[] = [];
+
+  ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers(): void {
+    this.userService.getUsers()
+    .subscribe(users =>
+      this.userService.users=users
+      this.users=this.userService
+      );
+  }
+
 
   displayedColumns: string[] = ['id', 'name','email', 'actions'];
   editMode = false;
@@ -35,8 +48,6 @@ export class UserListComponent {
     console.log('Delete ID:', id);
   }
 
- generalUserList$ = combineLatest([this.userListResult$, this.userDetail$]).pipe(
-  map(([userList, addedUsers]) => [...userList, addedUsers])
- )
+
   constructor(private userService: UserService) {}
 }
