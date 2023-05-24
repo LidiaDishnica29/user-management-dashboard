@@ -1,4 +1,5 @@
 
 export const environment={
- baseUrl : 'api/users',
+  baseUrl:'http://localhost:3000/user-list',
+  secondUrl : 'api/users',
 }

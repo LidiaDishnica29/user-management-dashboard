@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -13,7 +14,7 @@ export class AddListComponent implements OnInit {
   userListForm!: FormGroup;
   userDetail: IUserDetail;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private route: Router, private router: ActivatedRoute) {
     this.userDetail = {} as IUserDetail;
   }
 
@@ -33,8 +34,11 @@ export class AddListComponent implements OnInit {
   onSaveUser(): void {
     debugger;
     this.userDetail = this.userListForm.value;
-    this.userService.addUsers(this.userDetail).subscribe(user=>this.userService.users.push(user));
-
+    this.userService.addUsers(this.userDetail).subscribe(user=>{
+      this.userService.users.push(user);
+    }
+      );
+this.route.navigateByUrl('/user-list');
     this.userListForm.reset();
   }
 

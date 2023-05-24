@@ -9,16 +9,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit{
-  // loadAllResult$ = this.userService.getUsers();
-  // userDetail$  = this.userService.userDetail$;
-
-  // userListResult$: Observable<IUserDetail[]> = this.loadAllResult$.pipe(
-  //   map((userDetailList) =>
-  //     userDetailList.filter((userDetailList: IUserDetail) =>
-  //       `${userDetailList.name} ${userDetailList.email}`.toLowerCase()
-  //     )
-  //   )
-  // );
   users: IUserDetail[] = [];
 
   ngOnInit(): void {
@@ -28,8 +18,10 @@ export class UserListComponent implements OnInit{
   getUsers(): void {
     this.userService.getUsers()
     .subscribe(users =>
-      this.userService.users=users
-      this.users=this.userService
+      {
+        this.userService.users=users;
+        this.users=this.userService.users;
+    }
       );
   }
 
