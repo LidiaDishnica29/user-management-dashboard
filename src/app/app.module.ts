@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserService } from './services/user.service';
+import { EditListComponent } from './components/edit-list/edit-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UserService } from './services/user.service';
     UserListComponent,
     AddListComponent,
     UserDashboardComponent,
+    EditListComponent,
 
   ],
   imports: [

@@ -34,23 +34,22 @@ httpOptions = {
     return users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 11;
   }
   getUserById(id: number): Observable<IUserDetail> {
-    const url = `${environment.baseUrl}${id}`;
+    const url = `${environment.baseUrl}/${id}`;
     return this.http.get<IUserDetail>(url).pipe(
-      catchError(this.handleError<IUserDetail>(`getHero id=${id}`))
+      catchError(this.handleError<IUserDetail>(`get user  id=${id}`))
     );
   }
 
-
 deleteUser(id: number): Observable<IUserDetail> {
-  const url = `${environment.baseUrl}${id}`;
+  const url = `${environment.baseUrl}/${id}`;
 
   return this.http.delete<IUserDetail>(url, this.httpOptions).pipe(
     catchError(this.handleError<IUserDetail>(`delete user with id ${id}`))
   );
 }
 
-updateUser(user: IUserDetail): Observable<any> {
-  return this.http.put(`${environment.baseUrl}`, user, this.httpOptions).pipe(
+updateUser(user: IUserDetail): Observable<IUserDetail> {
+  return this.http.put<IUserDetail>(`${environment.baseUrl}/${user.id}`, user, this.httpOptions).pipe(
     catchError(this.handleError<any>('updateUser'))
   );
 }

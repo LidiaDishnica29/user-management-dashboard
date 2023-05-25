@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { IUserDetail } from 'src/app/models/user-detail.model';
@@ -10,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserListComponent implements OnInit{
   users: IUserDetail[] = [];
+  constructor(private userService: UserService, private route: Router, private router: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -27,19 +29,16 @@ export class UserListComponent implements OnInit{
 
 
   displayedColumns: string[] = ['id', 'name','email', 'actions'];
-  editMode = false;
-  editedItem: IUserDetail ;
 
-  edit(row: IUserDetail) {
-    this.editMode = true;
-    this.editedItem = { ...row };
+
+  edit(id:number) {
+    console.log(id);
+     this.route.navigateByUrl(`/edit/${id}`);
   }
 
-  delete(id: number) {
-    // Implement your delete logic here
-    console.log('Delete ID:', id);
+  delete(user: IUserDetail): void {
+    debugger;
+    this.users = this.users.filter(us => us !== user);
+    this.userService.deleteUser(user.id).subscribe();
   }
-
-
-  constructor(private userService: UserService) {}
 }

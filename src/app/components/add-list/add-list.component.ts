@@ -15,7 +15,6 @@ export class AddListComponent implements OnInit {
   userDetail: IUserDetail;
 
   constructor(private userService: UserService, private route: Router, private router: ActivatedRoute) {
-    this.userDetail = {} as IUserDetail;
   }
 
   ngOnInit(): void {

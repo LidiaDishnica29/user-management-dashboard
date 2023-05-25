@@ -2,13 +2,13 @@
   "user-list": [
     {
       "id": 1,
-      "name": "Lidia",
+      "name": "Lidia dishnica",
       "email": "lidia.dishnica@gmail.com"
     },
     {
       "id": 2,
       "name": "Lidia2",
-      "email": "Lidia2@gmail.com"
+      "email": "Lidia29@gmail.com"
     },
     {
       "id": 3,
@@ -17,18 +17,13 @@
     },
     {
       "name": "awawa",
-      "email": "gege@fff",
+      "email": "gege@fff.co",
       "id": 4
     },
     {
-      "name": "prova1",
-      "email": "prova123@gg",
+      "name": "rleee",
+      "email": "tljghs@gg.com",
       "id": 5
-    },
-    {
-      "name": "eeeg",
-      "email": "gee@ffe",
-      "id": 6
     }
   ]
 }
