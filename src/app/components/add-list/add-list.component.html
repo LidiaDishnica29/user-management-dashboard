@@ -1,32 +1,47 @@
-<mat-card class="multiple-card">
-  <mat-card-content>
-    <form
-      class="user-add-form"
-      [formGroup]="userListForm"
-      (ngSubmit)="onSaveUser()"
-    >
-      <!-- Name -->
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <mat-icon matPrefix>people</mat-icon>
-        <input matInput type="text" formControlName="name" />
-        <mat-error> Name must be at least 2 characters </mat-error>
-      </mat-form-field>
-      <!-- Email -->
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <mat-icon matPrefix>mail</mat-icon>
-        <input matInput type="text" formControlName="email" />
-        <mat-error> Your email is invalid </mat-error>
-      </mat-form-field>
-      <button
-        id="addUser"
-        type="submit"
-        [disabled]="!userListForm.valid"
-        mat-raised-button
+<div>
+  <h1 class="md-display-3 header-title">Add User</h1>
+  <mat-card class="multiple-card">
+    <mat-card-content>
+      <form
+        class="user-add-form"
+        [formGroup]="userListForm"
+        (ngSubmit)="onSaveUser()"
       >
-        New User
-      </button>
-    </form>
-  </mat-card-content>
-</mat-card>
+        <!-- Name -->
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <mat-icon matPrefix>people</mat-icon>
+          <input matInput type="text" formControlName="name" />
+          <mat-error> Name must be at least 2 characters </mat-error>
+        </mat-form-field>
+        <!-- Email -->
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <mat-icon matPrefix>mail</mat-icon>
+          <input matInput type="text" formControlName="email" />
+          <mat-error> Your email is invalid </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button
+            id="addUser"
+            mat-button
+            color="primary"
+            type="submit"
+            [disabled]="!userListForm.valid"
+          >
+            Save User
+          </button>
+          <button
+            id="goback"
+            mat-button
+            type="button"
+            color="warn"
+            (click)="goBack()"
+          >
+            Back
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

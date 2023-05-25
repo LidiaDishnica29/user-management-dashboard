@@ -1,8 +1,14 @@
-.multiple-card {
-  background-color: aliceblue;
-}
-
 .user-add-form {
   display: flex;
   flex-direction: column;
+}
+.button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+.header-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
 }

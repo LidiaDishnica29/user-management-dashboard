@@ -1,32 +1,54 @@
-<mat-card class="multiple-card">
-  <mat-card-content>
-    <form *ngIf="user"
-      class="user-add-form"
-      [formGroup]="userListForm"
-    >
-      <!-- Name -->
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <mat-icon matPrefix>people</mat-icon>
-        <input matInput type="text" [(ngModel)]="user.name" formControlName="name" />
-        <mat-error> Name must be at least 2 characters </mat-error>
-      </mat-form-field>
-      <!-- Email -->
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <mat-icon matPrefix>mail</mat-icon>
-        <input matInput type="text"  [(ngModel)]="user.email"  formControlName="email" />
-        <mat-error> Your email is invalid </mat-error>
-      </mat-form-field>
-      <button
-        id="editUser"
-        type="button"
-        (click)="save()"
-        [disabled]="!userListForm.valid"
-        mat-raised-button
-      >
-        Edit User
-      </button>
-    </form>
-  </mat-card-content>
-</mat-card>
+<div>
+  <h1 class="md-display-3 header-title">Edit User</h1>
+  <mat-card class="multiple-card">
+    <mat-card-content>
+      <form *ngIf="user" class="user-add-form" [formGroup]="userListForm">
+        <!-- Name -->
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <mat-icon matPrefix>people</mat-icon>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="user.name"
+            formControlName="name"
+          />
+          <mat-error> Name must be at least 2 characters </mat-error>
+        </mat-form-field>
+        <!-- Email -->
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <mat-icon matPrefix>mail</mat-icon>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="user.email"
+            formControlName="email"
+          />
+          <mat-error> Your email is invalid </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button
+            id="editUser"
+            mat-button
+            color="primary"
+            type="button"
+            (click)="save()"
+            [disabled]="!userListForm.valid"
+          >
+            Save User
+          </button>
+          <button
+            id="goback"
+            mat-button
+            type="button"
+            color="warn"
+            (click)="goBack()"
+          >
+            Back
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

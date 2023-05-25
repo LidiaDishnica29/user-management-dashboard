@@ -8,45 +8,53 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-edit-list',
   templateUrl: './edit-list.component.html',
-  styleUrls: ['./edit-list.component.css']
+  styleUrls: ['./edit-list.component.css'],
 })
-export class EditListComponent  implements OnInit {
-    user: IUserDetail | undefined;
-    userListForm!: FormGroup;
-    id:number;
+export class EditListComponent implements OnInit {
+  user: IUserDetail | undefined;
+  userListForm!: FormGroup;
+  id: number;
 
-    constructor(
-      private route: Router,
-      private router:ActivatedRoute,
-      private userService: UserService,
-    ) {}
+  constructor(
+    private route: Router,
+    private router: ActivatedRoute,
+    private userService: UserService
+  ) {}
 
-    ngOnInit(): void {
-      this.getUserById();
-      this.userListForm = new FormGroup({
-        name: new FormControl<string>('', [
-          Validators.required,
-          Validators.minLength(2),
-        ]),
-        email: new FormControl<string>('', [
-          Validators.email,
-          Validators.required,
-        ]),
-      });
-    }
-    getUserById(): void {
-      this.router.paramMap.subscribe(params => {
-        this.id = +params.get('id')!;
-  });
-      this.userService.getUserById(this.id)
-        .subscribe(user => this.user = user);
-    }
-
-    save(): void {
-      if (this.user) {
-        this.userService.updateUser(this.user)
-          .subscribe(() =>
-          {this.route.navigateByUrl('/user-list')});
-      }
+  ngOnInit(): void {
+    this.getUserById();
+    this.validate();
+  }
+  validate() {
+    this.userListForm = new FormGroup({
+      name: new FormControl<string>('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      email: new FormControl<string>('', [
+        Validators.email,
+        Validators.required,
+      ]),
+    });
+  }
+  getUserById(): void {
+    //get from route the id
+    this.router.paramMap.subscribe((params) => {
+      this.id = +params.get('id')!;
+    });
+    this.userService
+      .getUserById(this.id)
+      .subscribe((user) => (this.user = user));
+  }
+  //save user
+  save(): void {
+    if (this.user) {
+      this.userService.updateUser(this.user).subscribe(() => {});
+      this.goBack();
     }
   }
+
+  goBack(): void {
+    this.route.navigateByUrl('/user-list');
+  }
+}

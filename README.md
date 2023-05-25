@@ -1,7 +1,7 @@
 # Run application
 -Frontend
 npm run start
--REST API JSON server
+-REST API JSON server-> to connect with the json server run:
 1- json-server --watch db.json
 
 

@@ -9,36 +9,34 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
 })
-export class UserListComponent implements OnInit{
+export class UserListComponent implements OnInit {
   users: IUserDetail[] = [];
-  constructor(private userService: UserService, private route: Router, private router: ActivatedRoute) {}
+  constructor(
+    private userService: UserService,
+    private route: Router,
+    private router: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.getUsers();
   }
 
   getUsers(): void {
-    this.userService.getUsers()
-    .subscribe(users =>
-      {
-        this.userService.users=users;
-        this.users=this.userService.users;
-    }
-      );
+    this.userService.getUsers().subscribe((users) => {
+      this.userService.users = users;
+      this.users = this.userService.users;
+    });
   }
 
+  displayedColumns: string[] = ['name', 'email', 'actions'];
 
-  displayedColumns: string[] = ['id', 'name','email', 'actions'];
-
-
-  edit(id:number) {
+  edit(id: number) {
     console.log(id);
-     this.route.navigateByUrl(`/edit/${id}`);
+    this.route.navigateByUrl(`/edit/${id}`);
   }
 
   delete(user: IUserDetail): void {
-    debugger;
-    this.users = this.users.filter(us => us !== user);
+    this.users = this.users.filter((us) => us !== user);
     this.userService.deleteUser(user.id).subscribe();
   }
 }

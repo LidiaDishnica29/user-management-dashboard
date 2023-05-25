@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CdkColumnDef } from '@angular/cdk/table';
+import { EditListComponent } from './components/edit-list/edit-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -19,7 +20,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserService } from './services/user.service';
-import { EditListComponent } from './components/edit-list/edit-list.component';
 
 @NgModule({
   declarations: [

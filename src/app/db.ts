@@ -8,15 +8,14 @@ import { Injectable } from '@angular/core';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const users = [
-      { id: 2, name: 'Lidiaa',email:'lidia@dishn.com' },
-      { id: 3, name: 'Lidiaass',email:'test@dishn.com' },
-      { id: 4, name: 'Lida33',email:'prova@dishn.com' },
-
+      { id: 2, name: 'Lidiaa', email: 'lidia@dishn.com' },
+      { id: 3, name: 'Lidiaass', email: 'test@dishn.com' },
+      { id: 4, name: 'Lida33', email: 'prova@dishn.com' },
     ];
-    return {users};
+    return { users };
   }
 
   genId(users: IUserDetail[]): number {
-    return users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 1;
+    return users.length > 0 ? Math.max(...users.map((user) => user.id)) + 1 : 1;
   }
 }

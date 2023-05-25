@@ -14,10 +14,17 @@ export class AddListComponent implements OnInit {
   userListForm!: FormGroup;
   userDetail: IUserDetail;
 
-  constructor(private userService: UserService, private route: Router, private router: ActivatedRoute) {
-  }
+  constructor(
+    private userService: UserService,
+    private route: Router,
+    private router: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.valid();
+  }
+  valid() {
+    //validate form
     this.userListForm = new FormGroup({
       name: new FormControl<string>('', [
         Validators.required,
@@ -29,16 +36,18 @@ export class AddListComponent implements OnInit {
       ]),
     });
   }
-
+  //save user
   onSaveUser(): void {
-    debugger;
-    this.userDetail = this.userListForm.value;
-    this.userService.addUsers(this.userDetail).subscribe(user=>{
-      this.userService.users.push(user);
+    if (this.userListForm.valid) {
+      this.userDetail = this.userListForm.value;
+      this.userService.addUsers(this.userDetail).subscribe((user) => {
+        this.userService.users.push(user);
+        this.goBack();
+        this.userListForm.reset();
+      });
     }
-      );
-this.route.navigateByUrl('/user-list');
-    this.userListForm.reset();
   }
-
+  goBack(): void {
+    this.route.navigateByUrl('/user-list');
+  }
 }
