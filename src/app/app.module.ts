@@ -36,9 +36,6 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //   InMemoryDataService, { dataEncapsulation: false }
-    // ),
     /* Material Imports */
     MatSidenavModule,
     MatToolbarModule,

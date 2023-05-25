@@ -1,5 +1,3 @@
-
-export const environment={
-  baseUrl:'http://localhost:3000/user-list',
-  secondUrl : 'api/users',
-}
+export const environment = {
+  baseUrl: 'http://localhost:3000/user-list',
+};

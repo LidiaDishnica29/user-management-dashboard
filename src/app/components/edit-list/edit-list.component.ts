@@ -25,6 +25,7 @@ export class EditListComponent implements OnInit {
     this.getUserById();
     this.validate();
   }
+  //validate form
   validate() {
     this.userListForm = new FormGroup({
       name: new FormControl(this.user?.name, [
@@ -53,7 +54,7 @@ export class EditListComponent implements OnInit {
       this.goBack();
     }
   }
-
+  //navigate back to users list
   goBack(): void {
     this.route.navigateByUrl('/user-list');
   }
