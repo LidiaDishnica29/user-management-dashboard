@@ -1,8 +1,9 @@
 # Run application
 -Frontend
-npm run start
+**npm run start**
+
 -REST API JSON server-> to connect with the json server run:
-1- json-server --watch db.json
+** json-server --watch db.json**
 
 
 # UserManagementDashboard
