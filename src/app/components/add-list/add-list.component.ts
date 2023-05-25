@@ -21,10 +21,10 @@ export class AddListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.valid();
+    this.validForm();
   }
-  valid() {
-    //validate form
+  //validate form
+  validForm() {
     this.userListForm = new FormGroup({
       name: new FormControl<string>('', [
         Validators.required,
@@ -42,11 +42,12 @@ export class AddListComponent implements OnInit {
       this.userDetail = this.userListForm.value;
       this.userService.addUsers(this.userDetail).subscribe((user) => {
         this.userService.users.push(user);
-        this.goBack();
         this.userListForm.reset();
+        this.goBack();
       });
     }
   }
+  //navigate back to list
   goBack(): void {
     this.route.navigateByUrl('/user-list');
   }

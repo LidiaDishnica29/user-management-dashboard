@@ -23,22 +23,26 @@
         </mat-form-field>
         <div class="button-row">
           <button
-            id="addUser"
-            mat-button
-            color="primary"
-            type="submit"
-            [disabled]="!userListForm.valid"
-          >
-            Save User
-          </button>
-          <button
             id="goback"
             mat-button
             type="button"
             color="warn"
             (click)="goBack()"
+            #tooltip="matTooltip"
+            matTooltip="Back"
           >
-            Back
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <button
+            id="addUser"
+            mat-button
+            color="primary"
+            type="submit"
+            [disabled]="!userListForm.valid"
+            #tooltip="matTooltip"
+            matTooltip="Save user"
+          >
+            <mat-icon>save</mat-icon>
           </button>
         </div>
       </form>

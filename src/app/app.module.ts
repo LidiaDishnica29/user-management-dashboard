@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
@@ -28,7 +29,6 @@ import { UserService } from './services/user.service';
     AddListComponent,
     UserDashboardComponent,
     EditListComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -48,10 +48,10 @@ import { UserService } from './services/user.service';
     MatCardModule,
     MatInputModule,
     MatListModule,
-    MatTableModule
-
+    MatTableModule,
+    MatTooltipModule,
   ],
-  providers: [UserService,CdkColumnDef],
+  providers: [UserService, CdkColumnDef],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

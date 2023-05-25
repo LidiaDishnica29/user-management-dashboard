@@ -11,8 +11,8 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./edit-list.component.css'],
 })
 export class EditListComponent implements OnInit {
-  user: IUserDetail | undefined;
   userListForm!: FormGroup;
+  user: IUserDetail | undefined;
   id: number;
 
   constructor(
@@ -27,11 +27,11 @@ export class EditListComponent implements OnInit {
   }
   validate() {
     this.userListForm = new FormGroup({
-      name: new FormControl<string>('', [
+      name: new FormControl(this.user?.name, [
         Validators.required,
         Validators.minLength(2),
       ]),
-      email: new FormControl<string>('', [
+      email: new FormControl(this.user?.email, [
         Validators.email,
         Validators.required,
       ]),
@@ -42,9 +42,9 @@ export class EditListComponent implements OnInit {
     this.router.paramMap.subscribe((params) => {
       this.id = +params.get('id')!;
     });
-    this.userService
-      .getUserById(this.id)
-      .subscribe((user) => (this.user = user));
+    this.userService.getUserById(this.id).subscribe((user) => {
+      this.user = user;
+    });
   }
   //save user
   save(): void {

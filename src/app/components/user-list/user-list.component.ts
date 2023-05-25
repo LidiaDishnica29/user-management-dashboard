@@ -36,7 +36,9 @@ export class UserListComponent implements OnInit {
   }
 
   delete(user: IUserDetail): void {
-    this.users = this.users.filter((us) => us !== user);
-    this.userService.deleteUser(user.id).subscribe();
+    if (confirm('Are you sure to delete the user ' + user.name + '?')) {
+      this.users = this.users.filter((us) => us !== user);
+      this.userService.deleteUser(user.id).subscribe();
+    }
   }
 }
